@@ -1,0 +1,3 @@
+I tested the list module by creating a listTester.c file. To test it, I created a new list and inserted items and tried to find items that existed 
+and items that did not exist inside the list. The items that did exist inside of the list would return the item with the designated data while the
+items that did not exist would return NULL.

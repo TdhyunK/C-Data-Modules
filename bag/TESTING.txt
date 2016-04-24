@@ -1,0 +1,2 @@
+Tested bag module by creating a bagTester.c file. In this tester file, I tested the construction of a new bag, inserting items into a bag, and extracting
+items from the bag. When an item was extraacted, it would return the item that was extracted. When the bag is empty, it would return NULL.

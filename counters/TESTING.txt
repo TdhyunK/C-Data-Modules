@@ -1,0 +1,1 @@
+I tested the counters module by creating a countersTester.c file. In this file I created a new counters object, inserted items into the counters and retrieved the count for the items. Items that existed would return the count of its object and items that did not exist in counters would return NULL.
