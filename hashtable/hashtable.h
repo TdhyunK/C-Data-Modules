@@ -43,11 +43,4 @@ void *list_find(list_t *list, char *key);
 */ 
 bool list_insert(list_t *list, char *key, void *data);
 
-/*
-* Print out the contents of the hash table.
-*/
-void hashPrint(hashtable_t *ht);
-
-
-
 #endif // __COUNTERS_H

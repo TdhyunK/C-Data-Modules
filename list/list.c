@@ -19,6 +19,8 @@ typedef struct listItem{
 /**************** global types ****************/
 typedef struct list{
 	struct listItem *firstItem;
+	void (*destructor)(void *data); 
+
 } list_t;
 
 /**************** prototype functions ****************/
@@ -33,7 +35,7 @@ size_t strlen(const char *str);
 * Create a new list.
 */
 
-list_t *list_new(void){
+list_t *list_new(void (*destructor) (void *data)){
 
 	list_t *list = malloc(sizeof(list_t));
 
@@ -43,6 +45,7 @@ list_t *list_new(void){
 	else{
 		//initialize contents of the bag
 		list->firstItem = NULL;
+		list->destructor = destructor;
 		return list;
 	}
  
@@ -99,3 +102,9 @@ bool list_insert(list_t *list, char *key, void *data){
 	return false;
 }
 
+/**************** list_delete ****************/
+
+void list_delete(list_t *list){
+	(*list->destructor)(list);
+	list = list_new(list->destructor);
+}

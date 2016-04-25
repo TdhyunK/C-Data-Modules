@@ -20,9 +20,16 @@ void *bag_extract(bag_t *bag);
 */
 void bag_insert(bag_t *bag, void *data);
 
+
+/*
+* Delete the hentire bag
+*/
+void bag_delete(bag_t *bag);
+
+
 /*
 * Create a new bag
 */
-bag_t *bag_new(void);
+bag_t *bag_new(void (*destructor) (void *data));
 
 #endif // __BAG_H

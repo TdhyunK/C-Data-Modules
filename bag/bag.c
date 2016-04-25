@@ -20,13 +20,14 @@ typedef struct bagItem {
 
 typedef struct bag {
 	struct bagItem *firstItem;
+	void (*destructor)(void *data); 
 } bag_t;
 
 
 
 /**************** bag_new ****************/
 
-bag_t *bag_new(void){
+bag_t *bag_new(void (*destructor) (void *data)){
 	bag_t *bag = malloc(sizeof(bag_t));
 
 	if (bag == NULL){
@@ -35,6 +36,7 @@ bag_t *bag_new(void){
 	else{
 		//initialize contents of the bag
 		bag -> firstItem = NULL;
+		bag -> destructor = destructor;
 		return bag;
 	}
  }
@@ -47,11 +49,7 @@ void bag_insert(bag_t *bag, void *data){
 	newItem -> data = data;
 	newItem -> next = NULL;
 
- 	if (bag == NULL){ 
- 	 	bag = bag_new();
- 	}
-
- 	else if(bag->firstItem == NULL){
+ 	if(bag->firstItem == NULL){
  		bag->firstItem = newItem;
 
  	}
@@ -81,4 +79,12 @@ void *bag_extract(bag_t *bag){
 		return returnData;
 	}
 }
+
+/**************** bag_delete ****************/
+
+void bag_delete(bag_t *bag){
+	(*bag->destructor)(bag);
+	bag = bag_new(bag->destructor);
+}
+
 

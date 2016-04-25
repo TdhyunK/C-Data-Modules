@@ -12,7 +12,7 @@ int main(){
 
 	bag_t *bag;
 
-	bag = bag_new();
+	bag = bag_new(free);
 
 	bag_insert(bag, "h");
 
@@ -29,6 +29,21 @@ int main(){
 	bag_insert(bag, "h");
 	bag_insert(bag, "h");
 
+	bag_delete(bag);
+	printf("\n");
+	printf("BAG WAS DELETED\n");
+	printf("\n");
+
+	bag_insert(bag, "l");
+	bag_insert(bag, "w");
+
+	printf("Removed %s\n", (char*) bag_extract(bag));
+	printf("Removed %s\n", (char*) bag_extract(bag));
+	printf("Removed %s\n", (char*) bag_extract(bag));
+
+
+
 	return 0;
 
 }
+
