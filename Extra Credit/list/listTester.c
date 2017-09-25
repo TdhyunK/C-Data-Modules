@@ -32,5 +32,7 @@ int main(){
  	printf("Find testing: %s\n", (char*)list_find(list, "hello"));
  	printf("Find testing: %s\n", (char*)list_find(list, "goodbye"));
 
+
+
 }
 

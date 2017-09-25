@@ -21,7 +21,7 @@ typedef struct list list_t;
 /*
 * Create a new hashtable
 */
-hashtable_t *hashtable_new(const int num_slots, void (*destructor) (void *data));
+hashtable_t *hashtable_new(const int num_slots);
 
 /*
 * Find an item in the hastable with the given key
@@ -42,10 +42,5 @@ void *list_find(list_t *list, char *key);
 * Insert an item into the list with given key and data
 */ 
 bool list_insert(list_t *list, char *key, void *data);
-
-/*
-* Delete the hashtable
-*/
-void hashtable_delete(hashtable_t *ht);
 
 #endif // __COUNTERS_H

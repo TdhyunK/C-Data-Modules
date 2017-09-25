@@ -16,7 +16,7 @@ typedef struct list list_t;
 * Create an empty list
 * Return NULL if error
 */
-list_t *list_new(void (*destructor) (void *data));
+list_t *list_new(void);
 
 /* 
 * Find an item in the list with given key
@@ -28,10 +28,5 @@ void *list_find(list_t *list, char *key);
 * Return true if inserted successfully, false if unsuccesful
 */
 bool list_insert(list_t *list, char *key, void *data);
-
-/*
-* Delete the entire list
-*/
-void list_delete(list_t *list);
 
 #endif // __LIST_H

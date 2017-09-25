@@ -1,0 +1,1 @@
+I tested the hashtable module by creating a hashtableTester.c file. In this file, I tested the creation of a new hashTable, inserting into the hashtable, and finding an item that exists in the hashtable and finding an item that does not exist in the hashtable. Items that did exist would return the item with the corresponding data and items that do not exist return NULL.

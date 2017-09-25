@@ -22,15 +22,14 @@ bool list_insert(list_t *list, char *key, void *data);
 /**************** local types ****************/
 typedef struct hashTable{
 	int num_slots;
-	void (*destructor) (void *data);
 	list_t *hashTable[]; 
 
 
 } hashtable_t;
 
 
-/**************** hashgable_new ****************/
-hashtable_t *hashtable_new(const int num_slots, void (*destructor) (void *data)){
+/**************** hashable_new ****************/
+hashtable_t *hashtable_new(const int num_slots){
 
 
 	hashtable_t *table = malloc(sizeof(hashtable_t));
@@ -43,9 +42,8 @@ hashtable_t *hashtable_new(const int num_slots, void (*destructor) (void *data))
 	}
 
 	else{
-		table->destructor = destructor;
 		for(int i = 0; i < num_slots; i++){
-			table->hashTable[i] = list_new(table->destructor);
+			table->hashTable[i] = list_new();
 		}
 
 	}
@@ -54,14 +52,14 @@ hashtable_t *hashtable_new(const int num_slots, void (*destructor) (void *data))
 
 }
 
-/**************** hashgable_find ****************/
+/**************** hashable_find ****************/
 void *hashtable_find(hashtable_t *ht, char *key){
 
 	return list_find(ht->hashTable[JenkinsHash(key, ht->num_slots)], key); 
 
 }
 
-/**************** hashgable_insert ****************/
+/**************** hashable_insert ****************/
 bool hashtable_insert(hashtable_t *ht, char *key, void *data){
 	if(ht == NULL){
 		return NULL;
@@ -76,15 +74,5 @@ bool hashtable_insert(hashtable_t *ht, char *key, void *data){
 	return false; //key already exists
 
 }
-
-/**************** hashable_delete ****************/
-void hashtable_delete(hashtable_t *ht){
-
-	for(int i = 0; i < ht->num_slots; i++){
-		list_delete(ht->hashTable[i]);
-	}
-}
-
-
 
 

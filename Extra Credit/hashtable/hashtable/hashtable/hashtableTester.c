@@ -13,7 +13,7 @@
 
 int main(){
 	hashtable_t *table;
-	table = hashtable_new(10, free);
+	table = hashtable_new(10);
 	hashtable_find(table, "hi");
 	hashtable_insert(table, "hello", "1");
 	hashtable_insert(table, "bird", "2");
@@ -29,23 +29,6 @@ int main(){
 	printf("%s\n", (char*) hashtable_find(table, "hello")); 
 	printf("%s\n", (char*) hashtable_find(table, "bird"));
 	printf("%s\n", (char*) hashtable_find(table, "cat"));
-
-
-	hashtable_delete(table);
-
-
-	hashtable_insert(table, "poop", "2");
-	hashtable_insert(table, "cat", "6");
-
-	if(hashtable_find(table, "asdf") == NULL){
-		printf("NULL\n");
-	}
-
-	
-	printf("%s\n", (char*) hashtable_find(table, "poop")); 
-	printf("%s\n", (char*) hashtable_find(table, "cat")); 
-
-
 
 	return 0;
 }
